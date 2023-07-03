@@ -1,29 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import openBook from '../book-open.svg'
-function Sidebar() {
+function Sidebar(props) {
   return (
     <>
-      <div class="item2 sidebarmain">
+      <div className="item2 sidebarmain">
         <div className="sidebar">
-          <div className="logo"><img className="openBook" src={openBook}/><span className="index">Index</span></div>
-          <div className="sideData">
+       <div className="logo"><img className="openBook" src={openBook}/><span className="index">Index</span></div>
+       <div className="sideData">
           <ul className="menu">
-            <li className="menu-item">Units & Dimension</li>
-            <li className="menu-item">Laws of Motion</li>
-            <li className="menu-item">Thermodynamics</li>
-            <li className="menu-item">Kinematics</li>
-            <li className="menu-item">Work, Energy and Power</li>
-            <li className="menu-item">Electrostatics</li>
-            <li className="menu-item">Rotational Dynamics</li>
-            <li className="menu-item"> Gravitation</li>
-            <li className="menu-item"> Fluid Dynamics</li>
-            <li className="menu-item"> Units & Dimensions</li>
-            <li className="menu-item"> Laws of Motion</li>
-            <li className="menu-item"> Laws of Motion</li>
-            <li className="menu-item"> Thermodynmaics</li>
-            <li className="menu-item"> Kinematics</li>
-            <li className="menu-item"> Work,Energy and Power</li>
-            <li className="menu-item"> Electrostatics</li>
+         {
+          props.apiData.map((value,index)=>(
+              <li key={index} className="menu-item">{value.display_name}</li>
+          ))
+         }
           </ul>
           </div>
         </div>

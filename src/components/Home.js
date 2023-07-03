@@ -5,51 +5,35 @@ import image02 from '../image02.png';
 import image01 from '../image01.png';
 import View from '../View.svg';
 
-function Home() {
+function Home(props) {
   return (
     <>
       <div className="item3">
-        <div className='subjectDiv'>
+        {
+        (props.apiData.length>0)?   props.apiData.map((value,index)=>(
+
+          <div key={index} className='subjectDiv'>
           <p>
             <button className='floarLeft'>0%</button>
-            <span className='subjectName'>Units & Dimensions</span><br />
-            <span>Lectures: 20</span>
+            <span className='subjectName'>{value.display_name}</span><br />
+            <span>Lectures: {value.children.length}</span>
             <img className='floarRight' src={View} />
           </p>
           <div className='chaptersDiv'>
             <div className="grid-containernew">
-              <div className="item41 subjectPara"><img className='subjectImg' src={image01} /><br /> Lecture 1</div>
-              <div className="item51 subjectPara"><img className='subjectImg' src={image02} /><br /> Lecture 2</div>
-              <div className="item61 subjectPara"><img className='subjectImg' src={image01} /><br /> Lecture 3</div>
-              <div className="item71 subjectPara"><img className='subjectImg' src={image02} /><br /> Lecture 4</div>
-              <div className="item71 subjectPara"><img className='subjectImg' src={image01} /><br /> Lecture 5</div>
+              {
+              value.children.map((value1,index1)=>(
+                <div key={index1} className="item41 subjectPara"><img className='subjectImg' src={(index1%2==0)?image01:image02} /><br />{value1.display_name}</div>
+              ))
+                }
+
             </div>
           </div>
         </div>
-        <div className='subjectDiv'>
-          <p><button className='floarLeft'>0%</button><span className='subjectName'>Vector</span><br /><span>Lectures: 20</span><img className='floarRight' src={View} /></p>
-          <div className='chaptersDiv'>
-            <div className="grid-containernew">
-              <div className="item41 subjectPara"><img className='subjectImg' src={image01} /><br /> Lecture 1</div>
-              <div className="item51 subjectPara"><img className='subjectImg' src={image02} /><br /> Lecture 2</div>
-              <div className="item61 subjectPara"><img className='subjectImg' src={image01} /><br /> Lecture 3</div>
-              <div className="item71 subjectPara"><img className='subjectImg' src={image02} /><br /> Lecture 4</div>
-              <div className="item71 subjectPara"><img className='subjectImg' src={image01} /><br /> Lecture 5</div>
-            </div>
-          </div>
-        </div>
-        <div className='subjectDiv'>
-          <p><button className='floarLeft'>0%</button><span className='subjectName'>Kinematics 1D</span><br /><span>Lectures: 20</span><img className='floarRight' src={View} /></p>
-          <div className='chaptersDiv'>
-            <div className="grid-containernew">
-              <div className="item41 subjectPara"><img className='subjectImg' src={image01} /><br /> Lecture 1</div>
-              <div className="item51 subjectPara"><img className='subjectImg' src={image02} /><br /> Lecture 2</div>
-              <div className="item61 subjectPara"><img className='subjectImg' src={image01} /><br /> Lecture 3</div>
-              <div className="item71 subjectPara"><img className='subjectImg' src={image02} /><br /> Lecture 4</div>
-              <div className="item71 subjectPara"><img className='subjectImg' src={image01} /><br /> Lecture 5</div>
-            </div>
-          </div>
-        </div>
+        )):<p>Data is loading</p>
+        }
+
+
        
       </div>
     </>

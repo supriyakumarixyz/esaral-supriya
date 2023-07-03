@@ -41,6 +41,9 @@
     grid-gap: 10px;
     background-color: #eee;
     padding: 10px;
+    height: 200px;
+    overflow-x: scroll;
+
 }
 
 .grid-containernew>div {
